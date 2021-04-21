@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+       <bean class="java.util.Date" name="birthday" />
+
+       <!-- Spring的DI（依赖注入）方式：
+                     set方法注入
+                     构造器注入
+                     p名称注入
+                     sqel注入
+         -->
+
+       <!-- Set方法注入： 前提是该对象必须有set方法 -->
+       <bean class="com.spring.ioc.pojo.Person" name="person1">
+              <!-- 基本类型注入 -->
+              <property name="name" value="set方法注入"/>
+              <property name="age" value="26"/>
+              <!-- 复杂类型注入 -->
+              <property name="birthday" ref="birthday"/>
+              <!-- 注入null值 -->
+              <!--
+                      <property name="value" value="null" />====== 注：这个注入的不是 null ，而是一个字符串 "null"
+               -->
+              <property name="value">
+                     <null />
+              </property>
+       </bean>
+
+       <!-- 构造器方法注入 -->
+       <bean class="com.spring.ioc.pojo.Person" name="person2">
+              <!--
+                         <constructor-arg /> 标签的顺序无所谓，他是通过参数的变量名称 ，类型，顺序来确定的
+                                   index属性：表示当前标签表示的参数的在参数列表中的顺序 0 开始
+                                   name属性： 表示变量的名字
+                                   type属性： 表示当前标签表示的参数的类型
+                                   value属性：表示注入的值
+                                   注：
+                                          通过这4个属性可以定位到任何一个构造器
+                            一个标签只能设置一个参数
+                            标签的位置和参数列表中的参数位置不一样
+                            如果给的条件可以匹配到多个构造器，那么他会选择上面的那个
+              -->
+              <!--基本类型注入-->
+              <constructor-arg name="name" value="我是构造器"/>
+              <constructor-arg name="age" value="18"/>
+              <!-- 复杂类型注入 -->
+              <constructor-arg name="birthday" ref="birthday" />
+              <!--注入null值 -->
+              <constructor-arg name="value">
+                     <null />
+              </constructor-arg>
+       </bean>
+       <!-- p名称注入:
+                     需要导入约束 xmlns:p="http://www.springframework.org/schema/p"
+              基本类型注入
+       -->
+       <bean name="p" class="com.spring.di.pojo.P" p:nmae="张三" p:user-ref="person1"></bean>
+
+       <!-- sqel注入：是Spring3.0以后Spring提供的 -->
+       <bean name="spel" class="com.spring.di.pojo.Spel">
+              <property name="name" value="#{'spel测试注入'}" />
+              <property name="age" value="#{100}" />
+              <property name="address" value="#{'上海市什么什么区。。。。'}"/>
+              <property name="id" value="#{'0001'}"/>
+              <property name="car" value="#{car}"/>
+       </bean>
+       <bean id="car" class="com.spring.di.pojo.Car" >
+              <property name="name" value="不知道什么车"/>
+              <property name="color" value="黑色"/>
+       </bean>
+
+       <!-- 复杂类型注入 -->
+       <!--方法一：使用set方法注入-->
+       <bean name="test01" class="com.spring.di.pojo.DI_TestBean" >
+              <!-- 数组 -->
+              <property name="arr">
+                     <array value-type="java.lang.Object">
+                            <value type="java.lang.Integer">1</value>
+                            <value type="java.lang.String">我的</value>
+                            <ref bean="car"/>
+                            <bean class="java.util.Date"/>   <!--这个bean没有被注册到容器中-->
+                     </array>
+              </property>
+              <!-- 集合 -->
+              <property name="list">
+                     <list value-type="java.lang.Object">
+                            <value type="java.lang.Integer">1</value>
+                            <value type="java.lang.String">我的</value>
+                            <ref bean="car"/>
+                            <bean class="java.util.Date"/>   <!--这个bean没有被注册到容器中-->
+                     </list>
+              </property>
+              <!-- Map -->
+              <property name="map">
+                     <map value-type="java.lang.Object" key-type="java.lang.Object">
+                            <entry key="key1"  value-type="java.lang.Integer" value="1"/>
+                            <entry key="key2" value-type="java.lang.String" value="我的"  />
+                            <entry key="key3" value-ref="car"/>
+                            <entry key="key4">
+                                   <value>value4</value>
+                            </entry>
+                            <entry key="key5">
+                                   <ref bean="car"/>
+                            </entry>
+                            <entry key="key6">
+                                   <bean class="java.util.Date"/>  <!--这个bean没有被注册到容器中-->
+                            </entry>
+                     </map>
+              </property>
+              <!-- 对象 -->
+              <property name="car" ref="car"/>
+       </bean>
+
+       <!--方法二：使用构造器注入-->
+       <bean name="test02"  class="com.spring.di.pojo.DI_TestBean" >
+              <constructor-arg name="arr" index="0">
+                     <array value-type="java.lang.Object">
+                            <value type="java.lang.Integer">1</value>
+                            <value type="java.lang.String">我的</value>
+                            <ref bean="car"/>
+                            <bean class="java.util.Date"/>   <!--这个bean没有被注册到容器中-->
+                     </array>
+              </constructor-arg>
+              <constructor-arg index="1" name="list">
+                     <list value-type="java.lang.Object">
+                            <value type="java.lang.Integer">1</value>
+                            <value type="java.lang.String">我的</value>
+                            <ref bean="car"/>
+                            <bean class="java.util.Date"/>   <!--这个bean没有被注册到容器中-->
+                     </list>
+              </constructor-arg>
+              <constructor-arg index="2" name="map">
+                     <map value-type="java.lang.Object" key-type="java.lang.Object">
+                            <entry key="key1"  value-type="java.lang.Integer" value="1"/>
+                            <entry key="key2" value-type="java.lang.String" value="我的"  />
+                            <entry key="key3" value-ref="car"/>
+                            <entry key="key4">
+                                  <value>value4</value>
+                            </entry>
+                            <entry key="key5">
+                                   <ref bean="car"/>
+                            </entry>
+                            <entry key="key6">
+                                   <bean class="java.util.Date"/>  <!--这个bean没有被注册到容器中-->
+                            </entry>
+                     </map>
+              </constructor-arg>
+              <constructor-arg index="3" name="car" ref="car"/>
+       </bean>
+
+</beans>

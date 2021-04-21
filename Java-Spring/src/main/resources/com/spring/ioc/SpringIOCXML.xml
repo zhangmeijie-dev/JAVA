@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!--
+               name属性： 表示该对象在容器中的名字 可以使用特殊符号
+               id属性：    同name属性，但是该属性不可以使用特殊符号
+               class 属性： 表示该bean标签表示的对象的地址
+               factory-bean 属性：表示该bean标签的对象由容器中的其他对象来获取        注：  他和class属性同时只能有一个
+               factory-method 属性： （可省略）
+                       省略：（）
+                               1：当有class属性时：  是由class属性表示的对象的空参构造器来创建
+                       不省略：
+                               1： 当有 class属性时： 是由该属性来指定bean对象是由class属性表示的对象中的静态方法来获取到
+                               2： 当有 factory-bean属性时： 是由该属性来指定bean对象是由factory-bean属性表示的对象的某个非静态方法来获取
+                   注：
+                         有class属性时 ····该属性可以省略
+                         有factory-bean属性时·····该属性不可以省略
+
+                init-method 属性：表示创建该对象后执行的该对象中的指定某个方法.（初始化方法）
+                        注意：
+                                该属性表示方法是该标签创建的对象中的某个方法
+
+                destroy-method 属性： 表示创建该对象的在销毁前执行的该对象中的某个方法方法。（销毁方法）
+                        注意：
+                                该属性表示的方法是由销毁的对象自己中的方法
+
+                scope 属性  ：表示该对象的的创建方式
+                    prototype(多例)：
+                            只有在每次获取的该对象是才会创建，且不会放入spring容器中
+                    singleton（单例）：  默认
+                            当容器对象创建时创建该对象，每次获取不会创建该对象，
+                补充：
+                    当scope属性为多例时，spring只负责创建不负责管理（不会放入容器中）
+                    当scope属性为单例时，spring负责创建和管理（会放入容器中）
+         -->
+    <!-- 空参构造器 -->
+    <bean class="com.spring.ioc.pojo.Factory" name="beanFactory"/>
+    <!-- 指定构造器 详情见di-->
+    <bean class="com.spring.ioc.pojo.User" name="user0">
+        <constructor-arg name="name" value="123"/>
+        <constructor-arg name="age" value="123"/>
+        <constructor-arg name="birthday">
+            <null/>
+        </constructor-arg>
+
+    </bean>
+    <!-- 指定 初始化方法和 销毁方法 -->
+    <bean class="com.spring.ioc.pojo.User" name="user1"
+          init-method="init"
+          destroy-method="destroy" />
+    <!-- 通过创建对象指定方法获取（静态方法） -->
+    <bean class="com.spring.ioc.pojo.User" factory-method="getUser" name="user2"/>
+    <!-- 通过工厂中的其他对象指定方法获取（非静态方法） -->
+    <bean factory-bean="beanFactory" factory-method="createUser" name="user3"/>
+
+</beans>
