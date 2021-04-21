@@ -1,4 +1,4 @@
-package collection.proxy.cglib;
+package com.java.collection.proxy.cglib;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -6,6 +6,7 @@ import net.sf.cglib.proxy.MethodProxy;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
+import java.util.regex.Pattern;
 
 /**
  * CGLib 动态代理  基于类的形式

@@ -1,10 +1,10 @@
-package collection.proxy.proxy;
+package com.java.collection.proxy.proxy;
 
 import com.java.collection.proxy.component.Array;
 import com.java.collection.proxy.component.NotNull;
 import org.junit.Test;
 
-import java.lang.annotation.Annotation;
+import java.lang.annotation.*;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;

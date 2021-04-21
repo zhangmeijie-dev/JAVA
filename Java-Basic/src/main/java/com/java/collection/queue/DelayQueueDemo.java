@@ -1,4 +1,4 @@
-package collection.queue;
+package com.java.collection.queue;
 
 
 import java.util.concurrent.DelayQueue;
