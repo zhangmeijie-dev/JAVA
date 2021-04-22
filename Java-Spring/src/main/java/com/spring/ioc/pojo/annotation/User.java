@@ -3,11 +3,18 @@ package com.spring.ioc.pojo.annotation;
 
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.Serializable;
 import java.util.Date;
 
-
+//@Controller
+//@Service
+//@Repository
 @Component // 注册spring组件
 public class User implements Serializable{
     private  static final long serialVersionUID = 1L;
@@ -24,11 +31,13 @@ public class User implements Serializable{
         this.birthday = birthday;
     }
 
+    @PostConstruct
     public void init(){
-        System.out.println("我是User的初始化方法");
+        System.out.println("我是User 初始化方法");
     }
+    @PreDestroy
     public void destroy(){
-        System.out.println("我是User的销毁化方法");
+        System.out.println("我是User 销毁化方法");
     }
 
     public static User getUser(){

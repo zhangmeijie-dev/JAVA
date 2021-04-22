@@ -12,9 +12,9 @@ public class Factory {
         return  new User();
     }
     public void init(){
-        System.out.println("我是User的初始化方法");
+        System.out.println("我是Factory类中的 初始化方法");
     }
     public void destroy(){
-        System.out.println("我是User的销毁化方法");
+        System.out.println("我是Factory类中的 的销毁化方法");
     }
 }

@@ -28,6 +28,7 @@ public class IOC {
     public void method02() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("com/spring/ioc/SpringIOCAnnotation.xml");
         com.spring.ioc.pojo.annotation.User  user0 = (com.spring.ioc.pojo.annotation.User )context.getBean("createUser");
+        com.spring.ioc.pojo.annotation.User  user1 = (com.spring.ioc.pojo.annotation.User )context.getBean("user");
         context.close();
     }
 
