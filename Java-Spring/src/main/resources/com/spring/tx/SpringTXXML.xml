@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 指定spring读取db.properties配置 -->
+    <context:property-placeholder location="classpath:db.properties"  />
+
+    <!-- 注册连接池 -->
+    <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" >
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}" ></property>
+        <property name="driverClass" value="${jdbc.driverClass}" ></property>
+        <property name="user" value="${jdbc.user}" ></property>
+        <property name="password" value="${jdbc.password}" ></property>
+    </bean>
+
+    <!--注册Dao -->
+    <bean class="com.spring.tx.dao.TxDao" name="txDao">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!--注册Service -->
+    <bean class="com.spring.tx.service.TxService" name="txService" >
+        <property name="txDao" ref="txDao" />
+    </bean>
+
+    <!-- 添加事务 -->
+    <!-- 事务核心管理器,封装了所有事务操作. 依赖于连接池 -->
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+        <property name="dataSource" ref="dataSource" ></property>
+    </bean>
+    <!-- 事务模板对象 -->
+    <bean name="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate" >
+        <property name="transactionManager" ref="transactionManager" ></property>
+    </bean>
+    <!-- 配置事务通知 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager" >
+        <tx:attributes>
+            <!-- 以方法为单位,指定方法应用什么事务属性
+                isolation:隔离级别
+                    DEFAULT(-1)   跟随当前数据库隔离级别
+                    READ_UNCOMMITTED(1)  读未提交
+                    READ_COMMITTED(2) 读已提交
+                    REPEATABLE_READ(4) 重复读
+                    SERIALIZABLE(8)  串行化
+
+                propagation:传播行为
+                    Propagation_REQUIRED(0)
+                    Propagation_SUPPORTS(1)
+                    Propagation_MANDATORY(2)
+                    Propagation_REQUIRES_NEW(3)
+                    Propagation_NOT_SUPPORTED(4)
+                    Propagation_NEVER(5)
+                    Propagation_NESTED(6)
+
+                read-only:是否只读
+             -->
+            <tx:method name="test*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+            <tx:method name="select*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+            <tx:method name="insert*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+            <tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+            <tx:method name="updata*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+        </tx:attributes>
+    </tx:advice>
+    <!-- 配置织入 -->
+    <aop:config  >
+        <!-- 配置切点表达式 -->
+        <aop:pointcut expression="execution(* com.spring.tx.service.TxService.*(..))" id="txPc"/>
+        <!-- 配置切面 : 通知+切点
+                 advice-ref:通知的名称
+                 pointcut-ref:切点的名称
+         -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPc" />
+    </aop:config>
+
+</beans>

@@ -22,6 +22,12 @@
             <artifactId>spring-context</artifactId>
             <version>5.2.9.RELEASE</version>
         </dependency>
+        <!-- aop支持包 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>5.2.9.RELEASE</version>
+        </dependency>
 
         <!-- JDBC -->
         <dependency>
@@ -29,15 +35,24 @@
             <artifactId>spring-jdbc</artifactId>
             <version>5.2.9.RELEASE</version>
         </dependency>
-
-        <!-- aop支持包 -->
+        <!-- TX包 -->
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.9.5</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>5.2.9.RELEASE</version>
         </dependency>
-
-
+        <!--数据库连接驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
+        <!--数据库连接池-->
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
     </dependencies>
 
 </project>

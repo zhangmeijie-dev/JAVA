@@ -62,7 +62,7 @@ public class AOP {
     System.out.println();
     System.out.println();
 
-    userManager.after(-1);
+    userManager.after(1);
     System.out.println();
     System.out.println();
 
