@@ -55,8 +55,14 @@
                     Propagation_NESTED(6)
 
                 read-only:是否只读
+
+                timeout: 事务超时时间
+
+                rollback-for：导致事务回滚的异常类
+
+                no-rollback-for：不导致事务回滚的异常类
              -->
-            <tx:method name="test*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
+            <tx:method name="test*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
             <tx:method name="select*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
             <tx:method name="insert*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
             <tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false" />
