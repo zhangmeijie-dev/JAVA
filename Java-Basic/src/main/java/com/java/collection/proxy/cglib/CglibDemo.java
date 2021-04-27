@@ -6,10 +6,9 @@ import net.sf.cglib.proxy.MethodProxy;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
-import java.util.regex.Pattern;
 
 /**
- * CGLib 动态代理  基于类的形式
+ * CGLIB 动态代理  基于类的形式
  */
 public class CglibDemo {
   @Test
@@ -45,7 +44,7 @@ public class CglibDemo {
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
       System.out.println(method.getName() + "前置方法");
       Object invoke = methodProxy.invokeSuper(o, objects);
-      System.out.println(method.getName() + "后置置方法");
+      System.out.println(method.getName() + "后置方法");
       return invoke;
     }
   }
