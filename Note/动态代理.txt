@@ -1,0 +1,61 @@
+动态代理：
+	分为2大类
+一种是基于接口的实现（Proxy）
+一种是基于类的继承（cglib）
+
+JAVA提供的动态代理：（Proxy）
+	Proxy  . newProxyInstance（  ClassLoader ，
+				Class[ ] ,			
+				InvocationHandler
+			  ）;
+
+	ClassLoader:------------类加载器
+	Class[ ]：-----------目标对象所实现的接口的Class（代理对象也会继承这些接口）
+	InvocationHandler接口：------具体的代理动作
+
+
+	InvocationHandler接口：（只有一个抽象方法）
+		Object    invoke（ Object  ,   Menthod  ,   Object[ ]） throws Throwable
+
+			Object   ---------代理对象
+			Menthod  -----------被代理的方法 （ 目标对象的方法 ）
+			Object[ ]  -------------参数列表（实参）
+
+实例：
+目标对象：
+	public interface A{ void menthod1();void menthod2();}
+	public class  jisuanqi implements A{
+		public void menthod1(){
+		}
+		
+		public void menthod2(){
+		}
+		public void menthod3(){
+		}
+	}
+
+代理对象：
+	Class[] arr ={ A.class }
+	代理对象 =Proxy. newProxyInstance(
+		jisuanqi.class.getClassLoader（），
+		arr ,
+		new InvocationHandler(){
+			public Object invoke( Object obj , Menthod  menthod  , Object[]  arr){
+				-----前处理--------
+				menthod . invoke ( new jisuanji(), menthod , arr );
+				-----后处理-------
+				return   Object；
+			}
+		}
+
+	);
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,31 @@
+Scanner类：
+       让我们可以在命令行中接受键盘的输入
+
+★方法：
+	    nextInt()
+       		------接受键盘输入的一个Int类型的数据
+
+ 	    next（）       以空格分割
+  		----接受键盘输入的字String类型的数据
+
+	   nextLine ( )    以换行符‘\n'   结束（这也是他为什么在其他next语句后不能获取值的原因-----其他的方法都是以空格为输入结束的标志）
+		----功能大致同next的方法，当时但该语句前面有输入语句时（其他的next。。。。）该语句就会跳过不执行   
+
+	   nextLong（）
+		------接受键盘输入的Long类型数据
+
+
+	   nextByte()
+  		------接受键盘输入的Byte类型数据
+
+	   nextDouble（）
+      		----接受键盘输入的Double类型数据
+		。
+		。
+		。
+		。
+	  nextBIgInteger（）
+        		----接受键盘输入的一个BigInteger类型数据
+
+	  nextBigDecimal（）
+         		----接受键盘输入的一个BigDecimal类型

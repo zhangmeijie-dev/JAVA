@@ -1,0 +1,17 @@
+FileinputStream类：     java.io.FileInputStream
+	public class FileInputStream extends InputStream
+
+构造方法：
+	目的：
+	        为这个流对象绑定数据源
+	构造方法的参数：
+		File-------文件类型对象
+		String------------文件的地址 【绝对地址（计算机上的绝对地址）/ 相对地址（相对与所在工程的根目录的相对地址）】
+
+输入流文件读取文件的步骤：
+	1；创建字节输入流的子类对象
+	2：调用读取方法Read读取
+	3：关闭资源    close()
+
+方法：
+	继承父类方法

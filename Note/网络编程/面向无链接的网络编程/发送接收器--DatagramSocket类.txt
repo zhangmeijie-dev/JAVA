@@ -1,0 +1,20 @@
+DatagramSocket类：		java . net . DatagramSocket
+	extends  Object
+用来发送和接受数据包的对象
+
+
+构造方法：
+      ★★★	DatagramSocket（）-----------创建一个用于发送数据包的★发送器★
+
+      ★★★	DatagramSocket（ int ）------------创建一个用于接受指定端口的★接收器★
+
+
+方法：
+	void	send（ DatagramPacket ）----------发送器要来发送指定的数据包
+		注意：
+			他会按照数据包上的地址信息来发送数据
+
+	void	receive（ DatagramPacket ）--------接受器用来使用指定的数据包来接受发送来的数据包
+		注意：
+			1：该方法会造成线程等待，如果没有接收到数据，那么他会一直的等待下去一直等待数据的到来
+			2：如果用来接受的数据包装不下接受的数据，那么多余的数据将会丢失

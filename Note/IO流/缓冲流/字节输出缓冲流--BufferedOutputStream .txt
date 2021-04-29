@@ -1,0 +1,13 @@
+BufferedOutputStream类：		java.io.BufferedOutputStream
+	extends    FileOutputStream
+
+构造方法：
+	BufferedOutputsStream（ OutputStream  ）
+		创建一个用于提高指定输出流效率的缓冲流，缓冲区大小为: 8K
+
+	BufferedOutputsStream（ OutputStream , int）
+					int----指定缓冲区的大小（单位为：B ）
+		创建一个用于提高指定输出流效率的缓冲流，缓冲区的大小为 int指定的大小
+
+方法：
+	来自于父类

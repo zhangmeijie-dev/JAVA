@@ -1,0 +1,30 @@
+LinkedHashMap< K ，V >类：    java.util.LinkedHashMap
+      特点：	
+	1：存储数据的结构为： Hash表 + 链接列表
+	2：该集合与HashMap集合基本一样，唯一的区别是LinkedHashMap集合是有序的（ 存取有序 ）
+	3：该类是HashMap的子类
+
+补充：
+	护着一个运行于所有条目的双重链接列表。此链接列表定义了迭代顺序，该迭代顺序通常就是将键插入到映射中的顺序
+	★★★该集合是LinkedHashSet集合的底层★★★
+
+构造器：
+	
+	LinkedHashMap()------------构造一个具有默认初始容量 (16) 和默认加载因子 (0.75) 的空 LinkedHashMap
+
+	LinkedHashMap( Map<? extends K,? extends V> )-----------构造一个映射关系与指定 Map 相同的新 LinkedHashMap。
+		（所创建的 HashMap 具有默认加载因子 (0.75) 和足以容纳指定 Map 中映射关系的初始容量。 ）
+
+	LinkedHashMap( int )----------------构造一个带指定初始容量和默认加载因子 (0.75) 的空 LinkedHashMap
+		int----指定的初始容量
+
+	LinkedHashMap( int , float )---------构造一个带指定初始容量和加载因子的空 LinkedHashMap。
+		int------指定初始的容量
+		        float-----------指定加载因子
+				
+			★★★加载因子 * 初始容量  = Map集合扩容的零界值★★★
+
+
+特有方法：
+	全是父类的方法
+	

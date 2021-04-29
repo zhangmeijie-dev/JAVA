@@ -1,0 +1,15 @@
+ObjectInputStream类：	java.io.ObjectInputstream
+	extends	InputStream
+
+反序列化：
+	将一个序列化的对象从硬盘读取出来变成一个对象。
+构造方法：
+	ObjectInputStream（ InputStream ）
+
+方法：
+	Object	readObject（）；-------读取文件中的对象，并把它还原为一个对象
+	返回值：
+		序列化的对象
+	注意：
+		1：该方法会抛出异常（ ClassNotFoundException）
+		2：读取的文件中只能有一个序列化的对象

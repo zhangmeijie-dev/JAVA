@@ -1,0 +1,16 @@
+InetAddress类：		java. net . InetAddress
+	此类表示互联网协议 (IP) 地址
+IP 地址是 IP 使用的 32 位（ipv4）或 128 位（ipv6）无符号数字，它是一种低级协议，UDP 和 TCP 协议都是在它的基础上构建的。
+
+构造方法：
+	该类的构造方法是由 默认权限 修饰的，不能直接创建对象
+
+
+方法：
+     static	 InetAddress	getLocalHost() --------------返回本地计算机的IP地址对象
+
+     static  	 InetAddress	getByName(String host)-------返回指定主机名的IP对象
+
+	String	getHostName（）----------------获取IP对象的主机名
+
+	String	getHostName（）----------------获取IP对象的IP地址

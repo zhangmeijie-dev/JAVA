@@ -1,0 +1,38 @@
+Field类：			java . lang . reflect
+	用于描述了一个类的成员变量
+
+该对象没有由用户创建，只能使用方法获取
+
+方法：
+	String	getName();--------------------------不受权限的影响
+		返回该对象表示的变量名
+
+	void	set（Object  1 , Object  2 ）;   ------------------受权限的影响
+			Object-------一个包含该变量的对象
+				Object----------值（要保证他的类型能被接受）
+	void	set（Object , int ）;
+	void	set（Object , short ）;
+		.
+		.
+		.
+		为Object  1 中的Field表示的变量赋值。
+
+	Object	get ( Object );		------------受权限的影响
+	int	getInt ( Object )；
+	char	getChar ( Object ) ;
+		.
+		.
+		.
+		取出指定对象的Field所表示的变量的值。
+
+	Boolean	isAnnotationPresent（ Class ）；
+				Class-------指定一个注解的字节码
+		----------------------------------判断该对象表示的成员变量上面是否使用指定的注解
+
+	T	getAnnotation（Class<T>）;
+				Class<T> --------------指定一个注解的字节码
+		---------------------------------如果该对象表示的成员变量上存在指定类型的注释，则返回这些注释，否则返回 null。
+
+	Annotation[]	getAnnotations();
+		------------------------------------返回该对象表示的成员变量上存在的所有注释。
+

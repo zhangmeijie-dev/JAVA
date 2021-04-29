@@ -1,0 +1,35 @@
+JAVA中的I/O流的流向
+     输入流： 硬盘-----》JVM    读
+     输出流： JVM--->硬盘       写
+
+ 1：字节流
+ 2：字符流
+ 3：转换流
+ 4：缓冲流
+ 5：打印流
+
+字节流：
+FileInputStream
+FileOutputStream
+
+字符流：
+FileWriter
+FileReader
+
+转换流：
+InputStreamReader
+OutputStreamWriter
+
+缓冲流：
+BufferedInputStream
+BufferedOutputStream
+BufferedWriter
+BufferedReader
+
+打印流：
+PrintStream
+PrintWriter
+
+序列化
+ObjectInputStream
+ObjectOutputStream

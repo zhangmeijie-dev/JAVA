@@ -1,0 +1,38 @@
+Runnable接口：	java.lang.Runnable			
+   只有一个抽象方法run					    	
+	void run（）;						
+
+
+
+Callable<V>接口：	java.util.concurrent.Callable
+  只有一个抽象方法	
+	V     call（）	throws	Exception	
+
+★★★★Runnable接口与Callable接口的区别：	
+	1：Runnable的run方法没有返回值且也不可抛出异常，
+	2：Runnable接口可以直接用于Thread来创建线程，Callable接口则不可以（Callable是JDK1.5才引入的），需要通过FutureTask类来包装下才可以用于Thread创建线程。
+
+
+
+FutureTask类： java.util.concurrent.FutureTask
+	实现了 RunnableFuture<V>  接口  （该接口继承了Runnable、Future<V> 接口）
+
+构造方法：
+	FutureTask(Callable<V> ) ；
+		Callable<V> --------->Callable接口的实现类
+	FutureTask(Runnable , V )；
+		Runnable  ---------Runnable接口的实现类
+		V ----------  该线程运行的返回值
+方法：
+★★★	V	get（）；----------->如有必要，等待线程任务完成，然后获取其结果。
+		返回值：该线程call方法的返回值（call方法运行结果，run方法横为FutureTask(Runnable , V )中的V）
+	注意：
+	     1：该方法可能造成线程的无限等待（如果该Future对象绑定的线程没有还运行结束，那么此方法将一直等待下去，直到线程的任务执行结束）
+	     2：该方法会抛出异常
+
+★★★	V	get（ long，TimeUnit ）----------->如有必要，最多等待为所给定的时间之后，获取其结果（如果结果可用） 。
+		      long--------等待的时间
+			TimeUnit--------时间单位           （TimeUnit是一个枚举类型）
+		返回值：该线程call方法的返回值（call方法运行结果，run方法横为null）
+	注意：
+	     1：该方法和空参的get方法大致一样，只是该方法不会无限等待下去，他有一个等待时间的限制，如果超过该限制他会抛出异常

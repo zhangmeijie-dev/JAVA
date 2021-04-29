@@ -1,0 +1,94 @@
+Executor接口：	java.util.concurrent.Executor
+	只有一个抽象方法
+
+	void	execute（ Runnable ）；
+
+ExecutorService接口：	java.util.concurrent.ExecutorService
+	extends    Executor
+
+特有的部分抽象方法：
+	Future<V>	submit（ Runnable接口 ）；--------从线程池中取出一个线程来执行Runnable对象表示的任务
+		返回值：因为Runnable的run方法返回值为Null所以该方法的返回值为null；
+	Future<V>	submit（ callable接口 ）；----------从线程池中取出一个线程来执行Callable对象表示的任务
+		返回值：因为Callable中的call方法有返回值，所以该方法的返回值是一个封装了返回值的Future对象。
+
+	
+	void	shutdown（）；------------启动一次顺序关闭，执行以前提交的任务，但不接受新任务。如果已经关闭，则调用没有其他作用。
+
+	boolean	isShutdown（）；-----------判断调用者是否已经关闭。
+		返回值：如果关闭返回true，反之则返回flase
+
+
+Future<V>接口：
+	用来记录线程任务执行完毕的结果信息
+
+★★★	V	get（）；----------->如有必要，等待线程任务完成，然后获取其结果。
+		返回值：该线程call方法的返回值（call方法运行结果，run方法横为null）
+	注意：
+	     1：该方法可能造成线程的无限等待（如果该Future对象绑定的线程没有还运行结束，那么此方法将一直等待下去，直到线程的任务执行结束）
+	     2：该方法会抛出异常
+
+★★★	V	get（ long，TimeUnit ）----------->如有必要，最多等待为所给定的时间之后，获取其结果（如果结果可用） 。
+		      long--------等待的时间
+			TimeUnit--------时间单位           （TimeUnit是一个枚举类型）
+		返回值：该线程call方法的返回值（call方法运行结果，run方法横为null）
+	注意：
+	     1：该方法和空参的get方法大致一样，只是该方法不会无限等待下去，他有一个等待时间的限制，如果超过该限制他会抛出异常
+
+	boolean	cancel（boolean ）----->试图取消对此线程的执行。如果该线程已完成、或已取消，或者由于某些其他原因而无法取消，则此尝试将失败。
+			Boolean：flase--->不关闭该线程
+				true--->关闭该线程
+		返回值：如果无法取消任务，则返回 false（这通常是由于它已经正常完成）；否则返回 true
+	注意：当调用 cancel 时，如果调用成功，而此任务尚未启动，则此任务将永不运行。
+
+
+	boolean	isDone()--------->如果线程任务已完成，则返回 true。 
+	注意：
+		该线程可能由于正常终止、异常或取消而完成，在所有这些情况中，此方法都将返回 true。
+	
+	
+	boolean	isCancelled() -------> 如果在任务正常完成前将其结束，则返回 true。
+ 
+
+
+
+Executors类：（工具类）	java.util.concurrent.Executors
+	线程池的工厂类
+
+	static	ExecutorService	newFixedThreadPool（ int ）；       
+			创建固定大小的线程池
+						int------线程池中线程数
+	static	ExecutorService	newCachedThreadPool（）；
+			创建缓存大小的线程池
+	static	ExecutorService	newSingleThreadExecutor（）；
+			创建单一的线程池 
+	static	ExecutorService	newScheduleThreadPool（int）；
+							int------线程池中线程数
+			具有周期执行的功能
+				。
+				。
+				。
+				。
+ThreadPoolExecutor类：   extends     ExecutorService
+	（线程池） 
+构造方法：
+	ThreadPoolExecutor（ 
+		int corePoolSize ,         --------------------       线程池中额线程数       （核心线程）
+		int maximumPoolSize,   --------------------     池中允许最大的线程数
+		long keepAliveTime,    ------------------          池中非核心线程空闲的最大事件   （ 非核心线程 = maximumPoolSize  - corePoolSize ）
+		TimeUnit unit,   ------------------  等待时间单位
+		BlockingQueue<Runnable> workQueue，---------------------- 线程任务的缓存队列。(此队列仅保持由 execute 方法提交的 Runnable 任务,submit方法最终也是调用execute 方法)
+		ThreadFactory threadFactory,      ---------------------   创建线程时使用的工厂 
+                              	RejectedExecutionHandler handler     -------------  接收到新任务时，目前没有空闲线程处理时的处理器	( 线程池的拒绝处理方法 )
+	）
+	
+  当一个任务通过execute(Runnable)方法欲添加到线程池时：
+	l  如果此时线程池中的数量小于corePoolSize，即使线程池中的线程都处于空闲状态，也要创建新的线程来处理被添加的任务。
+
+	2  如果此时线程池中的数量等于 corePoolSize，但是缓冲队列 workQueue未满，那么任务被放入缓冲队列。
+
+	3  如果此时线程池中的数量大于corePoolSize，缓冲队列workQueue满，并且线程池中的数量小于maximumPoolSize，建新的线程来处理被添加的任务。
+
+	4  如果此时线程池中的数量大于corePoolSize，缓冲队列workQueue满，并且线程池中的数量等于maximumPoolSize，那么通过 handler所指定的策略来处理此任务。也就是：处理任务的优先级为：核	心线程corePoolSize、任务队列workQueue、最大线程maximumPoolSize，如果三者都满了，使用handler处理被拒绝的任务。 
+
+

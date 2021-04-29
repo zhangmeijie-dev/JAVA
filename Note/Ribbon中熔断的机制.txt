@@ -1,0 +1,21 @@
+	Ribbon超时与Hystrix超时问题，为了确保Ribbon重试的时候不被熔断，我们就需要让Hystrix的超时时间大于Ribbon的超时时间，否则Hystrix命令超时后，该命令直接熔断，重试机制就没有任何意义了。
+	从下面的配置来说，ribbon超时配置为2000，请求超时后，该实例会重试1次，更新实例会重试1次。
+
+所以hystrix的超时时间要大于?(1 + MaxAutoRetries + AutoRetriesNextServer) * ReadTimeout 比较好，具体看需求进行配置。
+
+{服务名}:
+  ribbon:
+    ReadTimeout: 2000	#通信超时时间（毫秒） 一起请求从接收到响应的时间
+    ConnectTimeout: 1000   #连接超时时间（毫秒）   发起请求到接收请求的时间
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 1
+ 
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000

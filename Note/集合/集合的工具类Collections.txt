@@ -1,0 +1,22 @@
+Collections类：
+	集合的工具类
+全是静态方法，可以直接 内名.方法名调用
+
+	addAll（Collections<? extends E> , E.. ）----------将指定的所有E对象，添加到指定的集合中去
+
+	void   shuffle(List<T> list)-------对list集合进行随机的排序
+
+	T   binarySearch(List<T> list,T s)---------对调用者进行二分查找法，查找指定的一个数
+
+	
+	void    sort（List<E>  ， Comparator<E>）------对传过来的集合对象使用指定的规则对该集合的元素进行排序
+		  List<E>  ---指定要被排序的集合
+				Comparator<E>-----指定对集合的排序规则	
+
+   	void   sort(List<T> list)----------对list集合进行排序（按升序进行排序）
+	注意：	使用集合中属对象自己的排序规则（如果集合中的元素没有实现Compareble接口那么该方法会报一个类型转换异常）
+			    该方法是与            接口 Comparable<T>           和             接口Comparator<T>其中的一个一起使用的	
+				看compareTo方法的返回值是否大于0		看compare方法的返回值是否大于0 
+				大于零，就换位置，反之则不换进行下一次循环	大于零，就换位置，反之则不换进行下一次循环
+
+	

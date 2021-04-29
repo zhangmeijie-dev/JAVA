@@ -1,0 +1,31 @@
+DatagramPacket类：			java . net . DatagramPacket
+	extends	Object
+用来封装要发送的的数据和用来接受方法的数据
+
+构造方法：
+    ★★★★	DatagramPacket（ byte[] , int , InetAddress , int ）------------创建一个用于★发送端★的数据包
+		             byte[]-------要传送的数据
+			         int------要传送的数组长度（不能大于数组的长度）
+				InetAddress-------传送对象的IP地址对象
+					     int-------传送对象的端口号
+
+    ★★★★	DatagramPacket（ byte[] , int , int ,InetAddress , int ）------------创建一个用于★发送端★的数据包
+			      int-----发送数据的起始索引
+				int----要发送数据的长度（不能大于数组的长度）
+	
+    ★★★★	DatagramPacket（ byte[] , int ）-------------创建一个用于 ★接受端★ 的数据包对象
+		              byte[] -------要来接受发送数据的数组
+			         int --------------指定接数组一次用多少长度来接受
+
+    ★★★★	DatagramPacket（byte[] ，int，int ）--------创建一个用于 ★接受端★ 的数据包对象
+			          int-------用来指定用来接受一次数据的数组起始索引
+				int-----------用来指定数组一次用多少的长度来接受
+
+方法：
+	InetAddresss	getAddress（）--------------------返回发送端的IP地址对象
+
+	int	getLength（）---------------返回发送或接受到的数组长度。（实际的发送长度和接受到的数据长度）
+
+	int	getPort（）------------------返回发送端的端口号
+
+	void	close（）--------------关闭资源

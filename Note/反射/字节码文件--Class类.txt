@@ -1,0 +1,95 @@
+Class类：		java.lang.Class
+	用于描述java中的字节码文件				
+类在被编译后会生成  XX . class 文件  ， 
+
+预定义对象：（预定义在JVM中）
+	byte  ， short ，······（基本类型）
+	void
+
+构造方法：
+	Class 没有公共构造方法。Class 对象是在加载类时由 Java 虚拟机以及通过调用类加载器中的 defineClass 方法自动构造的。
+
+
+★★★★Class对象的获取方法★★★★
+	★方法一：
+		Class . forName（ String ）------------------获取指定路径的一个类的字节码对象
+				String-----指定一个类的全包名（src下的相对路径）
+
+	★方法二：
+		类名 . class  --------------获取指定一个类的字节码对象
+
+	★方法三：
+		对象 . getClass ( )-------------------------返回指定对象的字节码对象。
+
+★★方法★★
+	Constructor[ ]	getConstructors();
+	Constructor	getConstructor();		
+	Consturctor	getConstructor ( Class····);	
+			---------------------------------------------------------------只能获取public
+	Constructor[]	getDeclaredConstructors（）;	
+	Constructor	getDeclaredConstructor（）;	
+	Constructor	getDeclaredConstructor（Class······）;
+					class······   ------参数列表的Class
+			--------------------------------------------------------------获取所有的
+
+	Field[]		getFields();
+	Field		getField ( String );
+			--------------------------------------------------------只能获取public  （可以获取到父类的）
+	Field[]		getDeclaredFields();
+	Field		getDeclaredField( String );
+				String -------属性名（变量名）
+			--------------------------------------------------------可以获取到所有（不可以获取到父类的）
+
+	Menthod[ ]	getMenthods();
+	Menthod		getMenthod（String , Class······）；
+			--------------------------------------------------------只能获取public  （可以获取到父类的）
+	Menthod[ ]	getDeclaredMenthods();
+	Menthod[ ]	getDeclaredMenthod(String , Class····)；
+					String ------------方法名
+						Class····--------------参数列表的字节码
+			-------------------------------------------------------可以获取到所有的  （ 不可以获取到父类的）
+	ClassLoader	getClassLoader();
+			--------获取该资源的类加载器
+
+	Class[]		getInterface();
+			--------------------获取该对象所实现接口的所有Class对象
+
+	Class		getSuperclass();
+			--------------------获取该对象所继承的上一级父类的Class对象
+
+
+	URL		getResource( String );
+				string：-----  一个相对于该字节码对象所在的地的地址
+			-------------------------返回一个相对路径（相对与该class对象所在的相对路径）的绝对地址
+
+	InputStream	getResourceAsStream( String ) ;
+				string：-----  一个相对于该字节码对象所在的地的地址
+			-------------------------返回一个相对路径（相对与该class对象所在的相对路径）表示资源的的IO流
+
+
+		
+	boolean		isAnnotationPresent( Class<? extends Annotation> ）;
+			--------------------如果指定类型的注释存在于此元素上，则返回 true，否则返回 false。
+
+	Annotation	getAnnotation(  Class<A> ) ;
+          			------------------如果存在该元素的指定类型的注释，则返回这些注释，否则返回 null。 
+
+	Annotation[]	getAnnotations() ;
+			--------------------返回此元素上存在的所有注释 
+	
+	
+
+		 
+		
+
+
+
+
+
+
+
+
+
+
+
+

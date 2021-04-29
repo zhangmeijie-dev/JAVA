@@ -1,0 +1,12 @@
+BufferedInputStream类：		java.io.BufferedInputStream
+	extends	       FileInputStream
+
+构造方法：
+	BufferedInputsStream（ InputStream ）
+		创建一个缓冲区大小为8K的字节输入缓冲流
+	BufferedInputsStream（ InputStream ，int ）
+					int---指定缓冲区的大小（ 单位为：B ）
+		创建一个缓冲区为指定大小的字节输出缓冲流
+
+方法：
+	继承父类方法

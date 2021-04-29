@@ -1,0 +1,15 @@
+FileWriter类：		java.io.FileWriter
+	extends	OutputStreamWriter
+
+FileWriter字符流：  
+	OutputStream + JVM默认码表 ----（通过转换流）---->FileWriter
+
+构造器：
+	FileWriter（File）
+	FileWriter（String） 【绝对地址（计算机上的绝对地址）/ 相对地址（相对与所在工程的根目录的相对地址）】
+
+	FileWriter（File，boolean ）
+	FileWriter（String ，boolean ）
+
+方法：
+	继承Writer抽象类的

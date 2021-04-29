@@ -1,0 +1,33 @@
+Method类：		java . lang . reflect.Method
+	该类对象不能时被用户创建，只能使用方法获取
+
+方法：
+	Object	invoke（Object ，Object····）
+			Object  ---------一个包含该Method表示的对象
+				Object····· -------------------- 参数列表
+		------------------运行Object中Method表示的方法，并传递参数
+
+	注意：	如果该方法时静态方法的话，我们可以不用传递对象。例如：invoke（null，参数列表）
+	
+
+	T	getAnnotation( Class<T> )
+			        Class<T> ------------指定注解的class
+		----------------返会该对象上的指定注解对象
+
+
+	Annotation[]	getAnnotations();
+		---------------返回该对象上的所有注解对象
+
+
+	boolean	isAnnotationPresent( Class<? extends Annotation> ）；
+				Class-------------指定注解的class
+		---------------判断该对象上是否有指定的注解
+
+	String	getName()；
+		---------------返回该对象表示的方法名
+
+	Class[]	getParameterType（）；
+		---------------返回该对象的参数列表的字节码数据
+
+ 
+ 

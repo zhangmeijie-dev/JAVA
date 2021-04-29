@@ -1,0 +1,18 @@
+ArrayList类：     java.util.ArrayList
+	该集合存储数据的结构为：数组
+注意：
+    ------线程不安全的
+	特点：				
+		1：查找快				
+		2：增删慢
+构造器：
+
+	ArrayList（）-------创建一个初始容量为10的ArrayList对象
+
+	ArrayList（ Collection<? extends E> ）---------------构造一个包含指定 collection 的元素的列表，这些元素是按照该 collection 的迭代器返回它们的顺序排列的。
+
+	ArrayList（ int ）---------------创建一个初始容量为指定值（ int ）的ArrayList对象
+
+
+方法（特有方法）：
+	

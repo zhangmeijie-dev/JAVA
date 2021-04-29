@@ -1,0 +1,24 @@
+ServerSocket类：（服务端）		java.net.ServerSocket
+	extends	Object
+
+构造方法：
+	ServerSocket（ int ）---------------------------创建一个服务器，用来接收客户端的访问，并为其绑定一个端口号
+		int------指定端口号
+
+
+方法：
+       ★★★	Socket	accept（）-------返回一个与服务器链接的套接字对象（客户端）
+		注意：
+			该方法会造成线程等待，没有获取到链接对对象那么他会一直等待下去
+
+	void	slose（）------关闭此套接字
+
+        ★★★	  int	getLocalPort（）------返回此套接字在其上侦听的端口。 
+	返回值：
+		此套接字侦听的端口号；如果尚未绑定套接字，则返回 -1。
+
+
+	InetAddress	getInetAddress()   -------返回此服务器套接字的本地地址。
+
+
+	boolean	isClosed() ---------------------返回 ServerSocket 的关闭状态 

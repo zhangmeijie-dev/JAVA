@@ -1,0 +1,27 @@
+Constructor类：		java . lang . reflect . Constructor
+	用于描述构造器
+
+	该对象不可以自己创建，只能通过方法获取
+
+方法：
+	T	newInstance ( )；
+	T	newInstance（ 实际参数列表 ) ;
+		注意：
+			1：运行该对象表示的构造方法
+			2：只能运行公共权限的构造器
+
+	bollean	setAccessible（ boolean ) ;--------------父类（ AcessibleObject类 ）中的方法
+		用于屏蔽权限修饰符		true-----------屏蔽（取消权限修检查） 
+					false-(默认)----不屏蔽（实施权限检查）
+
+	Annotation[]	getAnnotations( ）；
+			--------------------------返回在该对象表示的构造器上使用的所有注解
+	T	getAnnotation(  Class<T> ）；
+				Class--------->指定一个注解的class
+		----------------------如果存在该独享表示的构造器上使用的指定类型的注释，则返回这些注释，否则返回 null。 
+
+	boolean	isAnnotationPresent（ Class ）；
+				Class---------指定一个注解的class
+		---------------------判断该对象表示的构造器上是否使用的有指定的注解
+
+

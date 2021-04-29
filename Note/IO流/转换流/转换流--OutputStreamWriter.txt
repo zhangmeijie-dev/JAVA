@@ -1,0 +1,12 @@
+OutputStreamWriter类：		java.io.OutputStreamWriter
+	extends	Writer
+是字节通向字符的桥梁
+
+	OutputStreamWriter（ OutputStream ）
+		使用平台默认码表对OutputStream流读取到的数据进行编码
+	OutputStreamWriter（ OutputStream ，String ）
+					String-----指定码表
+		使用指定的码表对OutputStream流读取到的数据进行编码
+
+方法：
+	继承父类

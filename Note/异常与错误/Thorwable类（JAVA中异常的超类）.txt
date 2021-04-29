@@ -1,0 +1,26 @@
+Throwable类：	java.lang.Throwable
+
+  ★★★★特点：
+	1：Java中所有异常和错误的超类
+	2：具有可抛性
+
+构造方法：
+	Throwable（）---------构造一个将 null 作为其详细消息的新 异常对象。 
+
+	Throwable（String ）--------------构造带指定详细消息的新 异常对象。 
+		String0----指定该异常的详细消息
+
+	Throwable（String , Throwable ) -------------使用一个指定的Throwable对象和详细消息来创建一个的新 异常对象。 
+		String------指定该异常的详细消息
+			Throwable-------------指定一个Throwable对象来创建对象
+
+	Throwable（Throwable ）-------使用一个指定的Throwable对象和 此对象的(cause==null ? null :cause.toString())值作为一个详细信息来创建一个新的 异常对象 
+		Throwable-------指定的一个Throwable对象
+
+方法：
+	★★★void	printStackTrace() -------------将此调用者（ Throwable ）及其追踪输出至标准错误流。 
+
+	★★★String	getMessage() --------------返回调用者（Throwable）的详细信息
+	
+	Throwable	getCause() -------返回调用者本身
+		返回值：返回此 throwable 的 cause；如果 cause 不存在或未知，则返回 null。

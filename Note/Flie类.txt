@@ -1,0 +1,121 @@
+					        File类：
+
+java  . io . File类（文件类）
+	 
+将操作系统中的，文件，目录（文件夹），路径，封装成File对象
+
+
+
+路径：
+   	绝对路径  和 相对路径
+
+专业名词：
+	目录:directroy
+	文件:file
+	路径：path
+
+File类中的静态变量：
+	pathSeparatorChar------获取当前系统的路径分隔符static char
+	pathSeparator------获取当前系统的路径分隔符static String
+			windows-------  ;
+			Linux---------  :
+
+	separatorChar-----获取当前系统的目录名称分隔符   static char
+	separator--------获取当前系统的目录名称分隔符   static String
+			windows-------  \
+			Linux---------   /
+
+
+构造方法：（4个构造器）
+	File(File parent, String child) 
+	File(String pathname) ---------可以创一个路径  可以写道文件夹 也可以写到文件 
+	File(String parent, String child) 
+	File(URI uri) 
+
+	将路径封装成一个对象（Flie类型的对象）
+
+
+
+
+
+类中的方法：
+	★★★boolean	createNewFile()-------创建文件 
+ 		只能创建文件不能创建文件夹   有后缀名的则创建相应的后缀名的文件没有的话则创建记事本文件
+
+
+	★★★boolean	mkdir()----------------创建文件夹（不能创建多层只能创建最后一个文件夹）
+		
+
+	★★★boolean	mkdirs()----------------创建文件夹（可以创建多层文件加）
+		
+		
+	★★★boolean	delete()--------------删除文件夹或文件（这删除是直接删除不放入回收站）
+						如果文件夹不是为空不可以删除
+
+
+	string	getName()-------------------返回路径表示的文件夹名或文件名
+
+	string	getPath()-----------------将Fiel型路径转换成string
+
+
+	long	length（）---------------------返回路径中文件的字节数（只能是文件，文件夹不可以）
+
+
+	string	getAbsoulutePath()------------------获取绝对路径
+
+	★★★file	getAbsoluteFile()---------------------获取绝对路径 
+
+	string 	getParent()---------------------------获取父路径
+	file	getParentFile()-----------------------获取父路径
+
+
+
+
+
+	★★★boolean	exists()---------------------------判断调用者的路径是否存在
+
+	★★★boolean	isDirectory()----------------------判断调用者的路径是否是文件夹
+	
+	★★★boolean	isFile()----------------------判断调用者的路径是否是文件
+
+
+
+	
+
+	★★★string[]	list()-----------------------------获取到调用者路径中的文件和文件夹
+						返回的只有文件或文件夹的名字
+
+
+
+	★★★  file[]	listFiles()------------------------获取到调用者路径中的文件和文件夹
+						
+				返回该文件或文件夹的全路径
+
+	static   file[]	listRoots()---------------------获取到系统中的所有根目录   就是获取所有的盘符S
+
+	
+	补充：
+	    文件获取的过滤器；（需要我们来定义一个类来继承FileFilter接口并重写抽象方法）
+		file []   listFiles(FileFilter filter)
+
+		file []   listFiles(FilenameFilter filter)
+
+
+		FileFilter接口：
+			过滤器
+			系统没有提供实现类需要自己 写一个实现类
+			FileFilter接口中只有一个抽象方法：
+				boolean    accept(File pathname)  ---------测试指定抽象路径名是否应该包含在某个路径名列表中。
+						
+					accept这个方法的调用者是listFiles方法 
+					
+
+
+
+
+
+
+
+
+
+

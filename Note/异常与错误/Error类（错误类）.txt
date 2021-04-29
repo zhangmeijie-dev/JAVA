@@ -1,0 +1,28 @@
+Error类：		java.lang.Error
+	extends   throwable
+	
+★★★特点：
+	1：一般不是代码层次的问题，没有办法通过修改代码解决，只有避开Error的发生
+	2：该中种类型的异常有点类似与RuntimeExcption，一般时由虚拟机来创建并抛出错误Error对象的，用户也可以自己来抛出
+	3：也可以被捕获，但是一般不去捕获，应为捕获了也解决不了
+
+构造方法：
+	Error() ---------构造详细消息为 null 的新错误。 
+
+	Error（String ）---------------构造带指定详细消息的新错误。
+		String-------指定详细消息 
+
+	Error（ String , Throwable ）---------使用指定详细消息和Throwable中的原因（cause）的新错误。 
+		String------指定详细信息
+		Throwable--------使用该对象的cause
+
+	Error（ Throwable ）--------------根据指定的原因和 (cause==null ? null :cause.toString()) 的详细消息来构造新的错误（通常包含 cause 的类和详细消息）。 
+
+
+方法（特有方法）：
+	该类没有自己的方法全是继承父类的方法
+
+
+
+
+

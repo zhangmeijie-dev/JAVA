@@ -1,0 +1,29 @@
+ObjectOutputStream类：		java.io.ObjectOutputStream
+	extends	OutputStream
+
+序列化流：
+	将一个对象以流的的形式写入到指定的文件中保存。
+
+构造方法：
+	ObjectOutputStream（ OutputStream ）
+
+方法：
+	void	writeObject（ Object ）；-----将指定的对象通过Output Stream流序列化到指定文件
+		
+		注意：
+			1：被序列化的对象必须要实现Serializable接口 
+
+			2：不能序列化静态的成员
+	
+			3：transient (瞬态) 关键字修饰的变量也不会被序列化
+
+
+
+补充：（序列化冲突）
+	Serializable接口：
+		1：标记接口
+		2：凡是被序列化的对象都要继承该接口
+		3：对象实现了Serializable接口后，该对象在每次编译的时候都会生成一个新的编号
+			public long   serialVersionUID = 值；
+		这样的化就会产生序列化冲突，解决办法： 
+			public static final   long   serialVersionUID = 值L；

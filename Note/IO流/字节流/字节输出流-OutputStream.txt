@@ -1,0 +1,19 @@
+字节输出流：OutputStream抽象类
+		--------java.io.OutputStream
+public abstract class OutputStream-------输出字节流的所有类的超类
+
+	作用：从java程序中向文件写入数据
+			
+	字节流每次只能操作一字节
+
+	 类中的方法：
+		abstract  void write(int b)---------------------- 将指定的int值对应的低8位二进制写入到此输出流
+
+		void write(byte[] b) ----------------------------将 b.length 个字节从指定的 byte 数组写入此输出流。
+		void write(byte[] b, int off, int len) ----------将指定 byte 数组中从偏移量 off 开始的 len 个字节写入此输出流。
+		void close()  ------------------------------关闭此输出流并释放与此流有关的所有系统资源。（尽量做到用完就关不要过多浪费资源）
+					
+注意：	
+	流对象，在操作文件的时候，java的虚拟机不做，由操作系统来完成操作
+
+	

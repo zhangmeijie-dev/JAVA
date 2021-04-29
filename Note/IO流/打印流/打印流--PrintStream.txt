@@ -1,0 +1,33 @@
+PrintStream类：		java.io.PrintStream
+	extends	FileOutputStream
+特点;
+	1：不负责是数据源，只负责数据的输出目的地
+	2：为其他输出流添加功能
+	3：永远不会抛出IOException，（但会抛出其他的异常）
+
+构造方法：
+	PrintStream（ String ）
+	PrintStream（ File ）
+	PrintStream（ OutputStream ）
+
+方法：
+	print（ int ）			println（ int ）
+	       （ char[ ] ）			          （ char[]）
+	       （ char[] , int , int ）		          （char[] , int ,int ）
+	       （ char ）			          （char）
+	       （ Object ）			          （Object）
+	       （ long ）			          （long）
+	       （ float ）			          （float）
+	       （ String ）			          （double）
+	       （ double ）			          （String）
+			-------原样输出不走码表
+
+	write（ int ）
+	       （ char ）
+	       （ char[]）
+	       （ char[] , int , int ）
+	       （String）
+	       （String , int ,int）
+	       （ float ）
+	       （ double）
+			----------走码表

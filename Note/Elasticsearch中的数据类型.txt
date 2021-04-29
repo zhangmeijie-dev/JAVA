@@ -1,0 +1,13 @@
+type：数据类型
+
+	text     -----可分词，也可以建立索引
+	keyword -----不可以分词，不可以建立索引
+
+	long  -------
+	integer
+	short
+	byte
+	double
+	float
+
+	data

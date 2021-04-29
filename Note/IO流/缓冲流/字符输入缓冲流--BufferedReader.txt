@@ -1,0 +1,17 @@
+BufferedReader类：		java.io.BufferedReader
+	extends	FileReader
+
+构造方法：
+	BufferedReader（ Reader ）
+		创建一个缓冲区大小为8K的字符输入缓冲流
+	BufferedReader（ Reader ，int ）
+				int----设置缓冲区大小 单位：B
+		创建一个缓冲区大小为指定字节的字符输入缓冲流
+方法：
+	继承父类
+（特有方法）
+	String	readLine（）；
+		读取一行文本，并移动指定，读完返回 null
+	注意：
+		1：/n 或 /r 认为一行结束
+		2：返回值中不包括换行符（/n）或回车（/r）

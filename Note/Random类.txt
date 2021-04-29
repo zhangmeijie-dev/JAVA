@@ -1,0 +1,10 @@
+Random类：（util包中）
+     
+	★方法
+		nextInt()    ----产生一个2^-32 ~ 2^31  之间的一个整数数
+		nextInt ( int )   -----产生一个 0~ 指定的Int类型之间的一个整数
+
+		nextByte (  byte [ ]  ) ----产生随机数并将参过来的数组给存储满 
+
+		nextDouble（）---产生一个0~1之间的double类型的数据
+		nextFloat（）----产生一个0~1之间的floa类型的数据

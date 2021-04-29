@@ -1,0 +1,18 @@
+BufferedWriter类：		java.io.BufferedWriter
+	extends	FileWriter
+
+构造方法：
+	BufferedWriter（ Writer ）
+		创建一个提高用户指定字符输出流效率的缓冲流，缓冲区大小为：8K
+	BufferedWriter（ Writer ，int ）
+			         int--------指定缓冲区的大小
+		创建一个提高用户指定字符输出流效率的缓冲流，缓冲区大小为用户指定int字节
+
+方法：
+	继承父类方法
+（特有方法）
+	void	newLine（）；
+		写入一个换行符。（根据系统来的）
+
+	补充：
+		System.lineSeparator()-------返回一个当前系统的换行符 

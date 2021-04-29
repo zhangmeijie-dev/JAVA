@@ -1,0 +1,51 @@
+Thread类：   java.lang.Thread
+	extends   Runnable接口
+
+		★★★★java支持多线程 ，采取的是抢占式调度★★★★
+
+构造方法：
+	Thread（）；-------创建一个线程对象（该线程使用的名字为：Thread-编号）
+	Thread（ String ）；-----创建一个线程对象（该线程对象为：String ）
+	Thread（ Runnable ）;
+	Thread（Runnable ，String ）；
+	等等。。。。
+
+方法：（比较有用的）
+	★★static	Thread	currentThread（）   -----------------放回当前正在执行的线程对象
+
+	static	int	activeCount（）------------------返回当前线程中线程组中活动的线程数
+
+	long	getId（）--------返回调用者的线程标志符
+				线程的标识符（ ID ）：
+					是一个正的long值，在创建线程时自动生成，线程的ID是唯一的，且终生不变
+
+	Thread.state	getState（）--------返回调用者（线程对象）的状态
+		state----枚举类型
+★★	String	getName（）---------返回调用者（线程对象）的线程名。
+							线程名：创建线程是给出的那个字符串，如果没给出来，默认的就是Thread_数字
+★★	void	setName（ String ）------设置调用者（线程对象）的线程名。
+
+	int	getPriority（）------返回调用者（ 线程对象 ）的优先级。
+						优先级：我们创建的线程默认情况下都是5级
+	void	setPriority（ int ）------设置调用者（ 线程对象 ）的优先级。
+			int----线程的优先级别   取值范围为  1~10
+
+★★★	void	sleep（ long ）-----设置调用者休眠多少毫秒。   （休眠并没有释放CPU的使用权）
+
+	void	run（）--------线程的任务方法
+
+★★★	void	start（）----------开启线程并执行run方法
+
+	void	interrupt()------>中断调用者表示的线程
+		补充：
+			如果该方法中断的线程是在该线程还没有进入阻塞态时将没事，如果是在进入阻塞态后执行该方法，那么他将会抛出一个异常
+		
+	static	boolean	interrupted()------判断调用表示的线程是否中断
+			返回值：true-----中断     flase-----没有进入中断状态
+		补充：
+			线程的中断状态就是被该方法移除的，应为但执行此方法后，如果线程时中断状态，那么他不仅会返回true他还会将该线程的中断状态移除
+
+	final	void	setDaemon( boolean )----------将该线程标记为守护线程或用户线程。
+		注意：
+			1：该方法必须在启动线程前调用。不然会抛出异常
+			2：该方法不可一被重写

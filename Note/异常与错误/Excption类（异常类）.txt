@@ -1,0 +1,19 @@
+Excption类：	java.lang.Excption
+	extends Throwable
+
+	★★★特点：
+		1：一般是人为的，可以被处理
+		2：异常一旦抛出就需要进行处理，如果自己没有处理（try-- catch  ）而是选择抛出去，那么在异常处理后整个程序将会停止,如果自己处理了，那么异常后面的的程序就会在异常处理后继续执行
+
+构造方法：
+	Exception（）---------构造详细消息为 null 的新异常
+ 
+	Exception（ String ）---------构造带指定详细消息的新异常。 
+		String----指定新异常的详细消息
+	Exception（String , Throwable )--------构造带指定详细消息（String ）和原因的新异常。 
+		String--------指定新异常的详细消息
+			Throwable--------
+	Exception（Throwable ）-------------------根据指定Throwable对象和 指定对象的(cause==null ? null : cause.toString()) 的详细消息构造新异常（它通常包含 cause 的类和详细消息）。 
+
+方法：（特有方法）
+	没有自己的方法，方法全是继承父类的

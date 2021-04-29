@@ -1,0 +1,21 @@
+LinkedHashSet< E >类：            java.util.LinkedHashSet
+                                                                                ★★★★LinkedHashSet的底层是一个LinkedHashMap集合★★★
+         特点：
+	1: 有序的（存取有序）
+	2：没有索引
+	3：数据的存储结构是：hash表 + 链表
+
+	注意：
+		该类集合是线程不安全的
+
+构造器：
+
+	LinkedHashSet()  --------------构造一个带默认初始容量 (16) 和加载因子 (0.75) 的新空链接哈希 set。
+
+	LinkedHashSet（Collection<? extends E>）-----------------构造一个与指定 collection 中的元素相同的新链接哈希 set。
+
+	LinkedHashSet（ int ）------------------构造一个带指定初始容量和默认加载因子 (0.75) 的新空链接哈希 set。
+
+	LinkedHashSet（ int ，float ）---------构造一个带有指定初始容量和加载因子的新空链接哈希 set。
+		           int  -----指定初始容量
+			   float-------加载因子    

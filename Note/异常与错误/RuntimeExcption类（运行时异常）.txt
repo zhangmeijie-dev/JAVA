@@ -1,0 +1,21 @@
+RuntimeExcption类：---运行时异常                     java.lang.RuntimeExcption
+	
+	extends   Excption
+★★★特点★★★
+	1：是Excption的子类
+	2：该种类型的异常无需自己创建或抛出（也可以自己创建或抛出）
+
+构造方法：
+	RuntimeException（）------------用 null 作为其详细消息构造一个新的运行时异常。 
+
+	RuntimeException（ String ）-----------用指定的详细消息构造一个新的运行时异常。 
+			String-----指定的详细信息
+
+	RuntimeException（String , Throwable ）---------用指定的详细消息和原因构造一个新的运行时异常。 
+			String--------指定的详细信息
+				Throwable---------使用指定Throwable对象中的信息
+	RuntimeException（Throwable ）---------用指定的原因和详细消息 (cause==null ? null :cause.toString()） 构造一个新的运行时异常（它通常包含类和 cause 的详细消息）。 
+	
+
+方法（特有方法）：
+	该方法没有自己的方法，全是继承父类Throwable类

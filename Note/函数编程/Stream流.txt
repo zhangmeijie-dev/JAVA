@@ -1,0 +1,38 @@
+Stream<T>接口：		java.util.stream.Stream
+	1：Stream流不是IO流
+	2：不是函数接口，但是他的方法参数是函数是接口
+	3：Stream流是一个集合的元素函数模型
+	4：Stream流不存储任何数据
+
+
+方法：
+	Stream< T >	filter（ Preadicate<T> ）--------过滤
+				Preadicate对象的test方法返回true不过滤，flase则过滤掉
+
+	Stream<R>	map（ Function<T,R> ）--------映射
+				将Stream流中的每一个数据按照Function对象的apply的方法来映射
+
+	Stream< T >	limit( long ) -------限定 从多少开始
+
+	Stream< T >	skit( long) --------跳过  跳过多少个
+
+	Stream<T >	concat（Stram< T > , Stream< T >）-----------将2个Stream流合成一个Stream流
+
+	void	forEcah（ Consumer ）...遍历该Stream流
+
+	R	collect（Collector<T,A,R>）----------将该Stream流转化为集合
+			Collectors . toList();
+			Collectors.toSet();
+
+	Object[]	toArray();---------将该Stream流转化为数组
+
+	A[]	toArray( IntFunction< A[ ] >)--------将该Steam流转化为指定类型数组
+
+获取Stream流对象的方法：
+	方法一：（将集合变为Stream）JDk 1.8以后 在Collection接口中的默认方法Stream（）可以获取该对象的Stream流
+
+	方法二：（将数组办成Stream）Arrays . Stream（ T[ ]）-------可以将一个指定的数组转化成Stream流
+
+	方法三：Stream . of（ T ）
+		Stream . of（T......）
+

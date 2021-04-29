@@ -1,0 +1,34 @@
+Collection < E > 接口：      java.util.Collection 
+	该接口是单列集合中的最顶层
+	
+方法：（抽象方法）
+	★★★ boolean   add（ E ） -------将指定的元素添加到该集合对象中的尾部            
+			 返回值：添加成功返回True  ，添加失败返回float
+
+	★★★ boolean   addAll（ Collection<? extends E> ）----------将指定的 Collection<? extends E>集合中的所有元素全部添加到集合对象中尾部
+			返回值：添加成功返回True  ，添加失败返回float
+
+	★★★ boolean   contains（ Object ）  -------------------------判断指定的对象Object，在调用者中是否存在
+			返回值：存在返回true ，不存在返回 float
+
+	 boolean   containsAll（ Collection<?> ）-------------------判断调用者中是否都包含指定的Collection集合中的所有元素（ 也就是指定的 Collection 集合中的每个元素，是否能在调用者中也找到该元素 ）
+			返回值：包含他的全部元素返回true  ，不包含全部元素返回float
+
+	★★★ boolean    isEmpty（ ） -----------------------判断调用者是否为一个空的集合（没有存储元素）
+			返回值： 调用者为空则返回true ，不为空则返回 float
+
+	★★★ boolean   remove（ Object ）-------------------- 删除调用者中的指定的一个元素Object，如果存在多个则删除第一个与指定元素Object一样的元素（列表中首次出现的指定元素（如果存在）。）
+			返回值： 移除成功则返回 ture 移除失败则返回 float
+
+	boolean    removeAll（ Collection <?> ) --------------移除调用者中与指定的集合Collection中相同的元素
+			返回值： 调用者中有元素被移除（不管多少个）则返回 true ，反之则返回 float
+	★★★ void	  clear()  -----------------移除此列表中的所有元素 
+
+	 Object [ ]    toArray（） -------------返回包含 调用者 中所有元素的数组。（  集合----->数组  ）
+			返回值：一个存储集合元素的Object数组   （集合中的元素全部向上转型为Object）
+	
+	★★★ <T>T[]       toArray（ T [ ] ）---------将调用者中的全部元素，存储到指定的数组（ T [ ] ）中
+			返回值： 传递过来的 T 类型的数组
+			注意：该方法有异常需要处理，可能存在数据类型的存储异常
+
+	★★★ int  size（） ------------------>返回调用者的大小（集合的你面存储了个多少元素）
