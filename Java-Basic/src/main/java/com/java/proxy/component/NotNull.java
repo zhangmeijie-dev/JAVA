@@ -1,4 +1,4 @@
-package com.java.collection.proxy.component;
+package com.java.proxy.component;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

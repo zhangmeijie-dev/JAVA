@@ -1,7 +1,7 @@
-package com.java.collection.proxy.proxy;
+package com.java.proxy.proxy;
 
-import com.java.collection.proxy.component.Array;
-import com.java.collection.proxy.component.NotNull;
+import com.java.proxy.component.Array;
+import com.java.proxy.component.NotNull;
 import org.junit.Test;
 
 import java.lang.annotation.*;

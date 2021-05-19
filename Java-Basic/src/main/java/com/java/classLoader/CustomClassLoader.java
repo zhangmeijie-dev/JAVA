@@ -1,4 +1,4 @@
-package com.java.collection.classLoader;
+package com.java.classLoader;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

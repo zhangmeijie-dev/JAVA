@@ -1,4 +1,4 @@
-package com.java.collection.proxy.cglib;
+package com.java.proxy.cglib;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
